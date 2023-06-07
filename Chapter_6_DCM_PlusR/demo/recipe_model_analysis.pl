@@ -1,5 +1,4 @@
-#include "recipe_model_tapp23_facts.pl".
-
+#include "recipe_model_facts.pl".
 
 % all_recipe_input(Rid,CSin)
 % Recipe `Rid` "overall" has inputs `CSin` (one to many)
@@ -137,8 +136,7 @@ select_recipe_input_violation(Rid,recipe(SS1,SP1),recipe(SS2,SP2),seq(S1,S2),M,S
     not select_serialize_derived_input(Rid,recipe(SS1,SP1),recipe(SS2,SP2),seq(_,S1),M-1,Sign,_,CSin).
 
 
-#show select_recipe_input_violation/9.
-
+%#show select_recipe_input_violation/9.
 
 test_serialize_recipe(Rid,A,B,S1,S2,seq(SS1,SS2),M,seq(SS1,SS2,SS3),N) :-
     test_serialize_recipe(Rid,A,B,S1,S2,S1,M,seq(SS1,SS2,SS3),N).
@@ -399,7 +397,7 @@ derived_process_schema(Rid,N,schema_state(CSin,SSout),PidMA,SS2MA,CSin) :-
 
 derived_process_schema(Rid,N,schema_state(CSout,SSout),PidMA,SS2MA,CSout) :- 
     derived_process_clean(Rid,N,_,_,schema_state(CSin,SSIn),schema_state(CSout,SSout),_,_,PidMA,SS2MA),
-    not parallel_recipe_violation(Rid,_,_,_,_,_,_,PidMA,_,_,_,SS2MA),
+    %not parallel_recipe_violation(Rid,_,_,_,_,_,_,PidMA,_,_,_,SS2MA),
     CSin!=CSout,
     CSout!=csRemoved,
     not derived_process_schema_removed(Rid,N,schema_state(CSin,SSIn),CSout).
@@ -438,8 +436,8 @@ derived_process_schema_not(Rid,N+1,J,CSx) :-
     N<=M.
 
 derived_process_schema_not(Rid,N,J,CSx) :-
-    derived_process_schema(Rid,N,J,PidMA,SS2MA,CSx),
-    parallel_recipe_violation(Rid,_,_,_,_,_,_,PidMA,_,_,_,SS2MA).
+    derived_process_schema(Rid,N,J,PidMA,SS2MA,CSx).
+    %parallel_recipe_violation(Rid,_,_,_,_,_,_,PidMA,_,_,_,SS2MA).
 
 %derived_process_schema_x(Rid,N,schema_state(CSout,SSout),PidMA,SS2MA) :- 
 %    derived_process_schema(Rid,N,schema_state(CSout,SSout),PidMA,SS2MA,CSx),
@@ -508,7 +506,7 @@ minimal_input_schema_recipe(Rid,CSin,Key,Value) :-
 
 derived_output_schema_recipe(Rid,CSout,Key,Value) :-
     derived_process_schema_clean(Rid,0,schema_state(CSout,_),PidMA,SS2MA),
-    not parallel_recipe_violation(Rid,_,_,_,_,_,_,PidMA,_,_,_,SS2MA),
+    %not parallel_recipe_violation(Rid,_,_,_,_,_,_,PidMA,_,_,_,SS2MA),
     column_schema(CSout,Key,Value).
 
 removed_schema(Rid,SS1,Pid,CSin) :-
@@ -516,7 +514,7 @@ removed_schema(Rid,SS1,Pid,CSin) :-
     process_input(Pid,_,CSin),
     not process_output(Pid,_,CSin).
 
-#show minimal_input_schema_recipe/4.
-#show derived_output_schema_recipe/4.
+%#show minimal_input_schema_recipe/4.
+%#show derived_output_schema_recipe/4.
 
     

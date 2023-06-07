@@ -1,4 +1,4 @@
-#include "recipe_model_tapp23_analysis.pl".
+#include "recipe_model_analysis.pl".
 
 recipe_input(Rid,N,Pid,CSin) :-
     recipe(Rid,N,Pid,_),
@@ -61,5 +61,5 @@ parallel_recipe(Rid,N,M,Pid1,Pid2):-
 %#show recipe_input/4.
 %#show parallel_candidate/3.
 %#show parallel_process/4.
-#show parallel_recipe/5.
+%#show parallel_recipe/5.
 %#show parallel_process_count/4.

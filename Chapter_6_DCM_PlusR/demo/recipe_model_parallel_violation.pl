@@ -1,5 +1,4 @@
-#include "recipe_model_tapp23_analysis.pl".
-
+#include "recipe_model_analysis.pl".
 
 column_schema(cs10,name,"Title"). %column_schema(cs10,data_type,text).
 
@@ -142,7 +141,7 @@ parallel_recipe_violation(Rid,S1,S2,seq(SS1,SS2),M,Sign,N,PidM,schema_state(CSin
     Sign!=SignB.
 
     
-#show parallel_recipe_violation/12.
+% #show parallel_recipe_violation/12.
 
 %parallel_recipe_violation(Rid,A1,B1,A2,B2,S1,S2,S3,S4,Sign1,Sign2,seq(SS2,PP1),seq(SS4,PP2),CS1) :-
 %    test_serialize_recipe_unique(Rid,A1,B1,S1,S2,seq(SS1,SS2),M1,Sign1,_),
