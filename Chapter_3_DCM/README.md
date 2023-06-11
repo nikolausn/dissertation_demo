@@ -1,5 +1,10 @@
 # ORPE Data Cleaning (Provenance) Model - DCM
 
+Run demo queries under demo folder by executing
+```
+./report_query.sh dcm_demo.db
+```
+
 Execute provenance harvester:
 ```
 python provenance_harvester.py <openrefine_projectfile>
