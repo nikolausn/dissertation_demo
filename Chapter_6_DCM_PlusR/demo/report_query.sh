@@ -25,13 +25,14 @@ parallel_recipe_violation_r1_serial(Rid,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11) :-
     parallel_recipe_violation(Rid,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11),
     Rid=r1_serial_violation.
 #show parallel_recipe_violation_r1_serial/12." > $temp_view
+clingo $parallel_violation $temp_view
 echo "Q4.(b). Parallel violation"
 echo "
 parallel_recipe_violation_r1_parallel(Rid,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11) :-
     parallel_recipe_violation(Rid,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11),
     Rid=r1_parallel_violation_1.
 #show parallel_recipe_violation_r1_parallel/12." > $temp_view
-clingo $parallel $temp_view
+clingo $parallel_violation $temp_view
 echo ""
 echo "Q5. Given a known dataset Ds_{new} with schema S_{new}, is a data-cleaning recipe r1 can be reused on the Ds_{new}?"
 echo "#show minimal_input_schema_recipe/4. #show execution_violation/6." > $temp_view

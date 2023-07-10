@@ -137,7 +137,7 @@ select_recipe_input_violation(Rid,recipe(SS1,SP1),recipe(SS2,SP2),seq(S1,S2),M,S
     not select_serialize_derived_input(Rid,recipe(SS1,SP1),recipe(SS2,SP2),seq(_,S1),M-1,Sign,_,CSin).
 
 
-#show select_recipe_input_violation/9.
+%#show select_recipe_input_violation/9.
 
 
 test_serialize_recipe(Rid,A,B,S1,S2,seq(SS1,SS2),M,seq(SS1,SS2,SS3),N) :-
@@ -516,7 +516,7 @@ removed_schema(Rid,SS1,Pid,CSin) :-
     process_input(Pid,_,CSin),
     not process_output(Pid,_,CSin).
 
-#show minimal_input_schema_recipe/4.
-#show derived_output_schema_recipe/4.
+%#show minimal_input_schema_recipe/4.
+%#show derived_output_schema_recipe/4.
 
     
