@@ -2,6 +2,8 @@ facts=recipe_model_facts.pl
 queries=recipe_model_analysis.pl
 parallel=recipe_model_parallel_inference.pl
 parallel_violation=recipe_model_parallel_violation.pl
+execution_violation=recipe_model_execution_violation.pl
+
 temp_view=temp_view.pl
 
 echo "Q1. What are the minimal input schemas needed to execute a data-cleaning recipe?"
@@ -29,8 +31,8 @@ parallel_recipe_violation_r1_parallel(Rid,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11) :-
     parallel_recipe_violation(Rid,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11),
     Rid=r1_parallel_violation_1.
 #show parallel_recipe_violation_r1_parallel/12." > $temp_view
-clingo $parallel_violation $temp_view
+clingo $parallel $temp_view
 echo ""
 echo "Q5. Given a known dataset Ds_{new} with schema S_{new}, is a data-cleaning recipe r1 can be reused on the Ds_{new}?"
-echo "#show parallel_recipe/5." > $temp_view
-clingo  $parallel $temp_view
+echo "#show minimal_input_schema_recipe/4. #show execution_violation/6." > $temp_view
+clingo  $execution_violation $temp_view
